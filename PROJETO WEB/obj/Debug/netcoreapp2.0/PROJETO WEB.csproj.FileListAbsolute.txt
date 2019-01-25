@@ -1,0 +1,11 @@
+C:\Users\axew\Desktop\PROJETO WEB\bin\Debug\netcoreapp2.0\PROJETO WEB.deps.json
+C:\Users\axew\Desktop\PROJETO WEB\bin\Debug\netcoreapp2.0\PROJETO WEB.runtimeconfig.json
+C:\Users\axew\Desktop\PROJETO WEB\bin\Debug\netcoreapp2.0\PROJETO WEB.runtimeconfig.dev.json
+C:\Users\axew\Desktop\PROJETO WEB\bin\Debug\netcoreapp2.0\PROJETO WEB.dll
+C:\Users\axew\Desktop\PROJETO WEB\bin\Debug\netcoreapp2.0\PROJETO WEB.pdb
+C:\Users\axew\Desktop\PROJETO WEB\obj\Debug\netcoreapp2.0\PROJETO WEB.csprojAssemblyReference.cache
+C:\Users\axew\Desktop\PROJETO WEB\obj\Debug\netcoreapp2.0\PROJETO WEB.csproj.CoreCompileInputs.cache
+C:\Users\axew\Desktop\PROJETO WEB\obj\Debug\netcoreapp2.0\PROJETO WEB.AssemblyInfoInputs.cache
+C:\Users\axew\Desktop\PROJETO WEB\obj\Debug\netcoreapp2.0\PROJETO WEB.AssemblyInfo.cs
+C:\Users\axew\Desktop\PROJETO WEB\obj\Debug\netcoreapp2.0\PROJETO WEB.dll
+C:\Users\axew\Desktop\PROJETO WEB\obj\Debug\netcoreapp2.0\PROJETO WEB.pdb

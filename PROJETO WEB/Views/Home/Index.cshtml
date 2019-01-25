@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Caixa X";
+}
+<!--Bloco em que se encontra um Formulário html com os devidos campos como forma de entrada dos dados para cálcular o Troco e suas quantidades de cédulas e moedas-->
+<div>
+    <form action="#">
+     <label>Total da Compra</label>
+     <input type="text" name="totCompra" class="form form-control" id="totCompra"/>
+    <br><br>
+      <label>Valor Recebido</label>
+     <input type="text" name="valorRecebido" class="form form-control" id="valorRecebido"/>
+    <br><br>
+     <button type="button" class="btn btn-info" id="btn">
+         Verificar Troco
+     </button> 
+
+     <br><br>
+     <div class="jumbotron jumbotron-fluid">
+         <h1>Troco</h1>
+         <h2 id="troco" class="alert alert-info" id="troco"></h2>
+         <br><br>
+         <h2>Quantidade de Células</h2>
+        <h2 id="qtdCels" class="alert alert-warning"></h2>
+     </div>   
+     
+     </form>
+
+     <script>
+         $(document).ready(function(){
+             //Bloco que adicona um evento para que ao clicar no botão seja acionada a função com objetivo de calcular o troco
+            $("#btn").click(function(){
+               
+                calcTroco();
+               
+            })
+
+            //Função que cálcula o troco de acordo com a entrada do valor recebido e total,e verifica se há troco e cálcula
+            //o mesmo informando as menores cédulas e moedas a serem dadas,onde as mesmas estão registradas em uma vetor(Array)
+            function calcTroco(){
+                let temMoeda;
+                let cedulas=[100,50,10,5,1];
+                let moedas=[0.5,0.1,0.05,0.01];
+
+                let valorRecebido=document.getElementById("valorRecebido");
+                let TotalCompra=document.getElementById("totCompra");
+
+                if(valorRecebido.value =="" || TotalCompra ==""){
+                    alert("Preencha os Campos de Valor Recebido e Total da Compra para Calcularmos o Troco!! ")
+                }else{
+
+                    //Bloco que valida se os campos são números
+                    if( isNaN(valorRecebido.value) || isNaN(TotalCompra.value)){
+                        alert("Entre com um Valor válido!!");
+
+                        valorRecebido.value="";
+                        TotalCompra.value="";
+
+
+                        return;
+                    }
+
+                    //Bloco que verifica se há troco para ser calculado
+                    if(valorRecebido.value==TotalCompra.value){
+                        setValor("troco","Não há troco");
+                        return;
+                    }
+
+                    let Troco=((parseFloat(valorRecebido.value) - parseFloat(TotalCompra.value)) );
+
+                    let qtdsCedulas=[];
+                    let qtdMoedas=[];
+
+
+                    cedulas.forEach(v=>{
+                        let qtdCels=(Troco/v);
+                        qtdsCedulas.push(qtdCels);
+                    });
+
+                
+                    let menorCedula = qtdsCedulas.map(Number).reduce(function(a, b) {
+                            return Math.min(a, b);
+                        });
+
+                    let cedula;
+
+                    for(let cont=0;cont<qtdsCedulas.length;cont++){
+                        if(qtdsCedulas[cont] == menorCedula){
+                            cedula=cedulas[cont];
+                        }
+                    }
+
+                    let moeda=(parseFloat((menorCedula.toString().replace(".", ",")).split(",")[1]));
+                    let trocoAux=(parseFloat((menorCedula.toString().replace(".", ",")).split(",")[0]))
+
+                    moeda=parseFloat("0."+moeda);
+
+                     moedas.forEach(v=>{
+                        let qtdMoeda=(moeda/v);
+                        qtdMoedas.push(parseInt(qtdMoeda));
+                    });
+
+                    if(qtdMoedas.length>0){
+                         let menorMoeda = qtdMoedas.map(Number).reduce(function(a, b) {
+                            return Math.min(a, b);
+                        });
+                          
+                        for(let cont=0;cont<qtdMoedas.length;cont++){
+                            if(qtdMoedas[cont] == menorMoeda){
+                                moeda=moedas[cont];
+                            }
+                        }
+
+                        if(menorMoeda >0){
+                             setValor("troco",Troco);
+                             setValor("qtdCels","São " + menorCedula + " Cédulas de R$ " + cedula +" e " + menorMoeda +" de " + moeda);
+
+                             return;
+                        }else{
+
+                              
+                        setValor("troco",Troco);
+                        setValor("qtdCels","São " + menorCedula + " Cédulas de R$ " + cedula);
+
+                        }
+
+                    }
+                }
+
+            }
+
+            //Função que seta os valores de acordo com o id do campo e a mensagem que quer ser mostrada no mesmo campo
+            function setValor(id,valor){
+                let campo=document.getElementById(id);
+                campo.textContent=valor;
+            }
+         });
+     </script>
+</div>
