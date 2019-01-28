@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+  <h1>Detalhes</h1>
+  <ul class="list-group">
+    <li class="list-group-item">Descrição : {{oportunidade.descricao}}</li>
+    <li class="list-group-item">NomeProspecto: {{oportunidade.nomeProspecto}}  </li>
+    <li class="list-group-item">Valor: {{oportunidade.valor}} </li>
+
+  </ul>
+  <br>
+  <button type="button" class="btn btn-info"><a  [routerLink]="['/oportunidades']">Retomar a Página Inicial</a></button>
+  <br><br>
+ <button type="button" class="btn btn-primary"> <a  [routerLink]="['/oportunidade-edicao',oportunidade.id]">Editar</a></button>
+</div>

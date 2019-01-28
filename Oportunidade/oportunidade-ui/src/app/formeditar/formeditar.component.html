@@ -1,0 +1,19 @@
+
+<p-panel header="Edição de  Oportunidades" >
+  <div class="p-grid">
+    <div class="p-col-2">Descrição</div>
+    <div class="p-col-10"><input pInputText type="text" [(ngModel)]="oportunidade.descricao"/></div>
+    <div class="p-col-2">Nome Prospecto</div>
+    <div class="p-col-10"><input pInputText type="text" [(ngModel)]="oportunidade.nomeProspecto"/></div>
+    <div class="p-col-2">Valor</div>
+    <div class="p-col-10"><input pInputText type="text" [(ngModel)]="oportunidade.valor"/></div>
+
+    <div class="p-col-10 p-offset-2">
+
+      <button pButton type="submit" label="Salvar" (click)="salvar()"></button>
+    </div>
+    <button type="button" class="btn btn-info"><a  [routerLink]="['/oportunidades']">Retomar a Página Inicial</a></button>
+    <br><br>
+
+  </div>
+</p-panel>
